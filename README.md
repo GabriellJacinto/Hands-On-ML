@@ -3,8 +3,9 @@
 Code Practice from the Kaggle and the Book Hands-On Machine Learning. 
 I use Obsidian to write the notes.
 
-
-<img src="./utils/book-cover.jpg" alt="Book Cover">
+<p align="center">
+  <img src="./utils/book-cover.jpg" alt="Book Cover" width="300">
+</p>
 
 ## Progress: 20% (4/19)
 
