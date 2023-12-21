@@ -1,6 +1,7 @@
 # Book: Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow
 
-Code Practice from the Kaggle and the Book Hands-On Machine Learning
+Code Practice from the Kaggle and the Book Hands-On Machine Learning. 
+I use Obsidian to write the notes.
 
 
 <img src="./utils/book-cover.jpg" alt="Book Cover">
