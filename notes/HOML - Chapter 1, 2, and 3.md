@@ -111,12 +111,71 @@ The choice between strategies will vary in performance from model to model, but 
 There are two other classes of classifiers: the [[Multi-label Classifiers|multi-label classifier]] (faces recognition) and the [[Multi-output Classifiers|multi-output classifiers]] (remove noise from image pixel-by-pixel).
 
 ---
-## Quotes
-1. ""
-
 ## Questions
 1. [[Why is that a random classifier has a AUC score of 0.5? What is the mathematical property in question here? Reminds me of monte carlo for some reason. Is it the probability of its random choices? Oh it is, we are talking binary classifiers, of course it will be 50-50.]]
 
 ---
 # References
-> 
+> [[Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow]]
+
+___
+# Questions (by ChatGPT)
+#flashcards
+
+Evaluate a classification model using a method suitable for skewed datasets :: Cross-Validation is often used to evaluate classification models on k-folds, but accuracy may be inadequate for skewed datasets. Instead, metrics based on the Confusion Matrix provide a more insightful analysis.
+
+Describe the structure of a Confusion Matrix :: A Confusion Matrix consists of four classes: True Negative (TN), True Positive (TP), False Positive (FP), and False Negative (FN), organized into a matrix format.
+
+Calculate Precision in the context of a Confusion Matrix :: Precision is calculated as \(\frac{TP}{TP+FP}\), measuring the accuracy of positive predictions among all predicted positive instances.
+
+Calculate Recall, True Positive Rate (TPR), or Sensitivity in the context of a Confusion Matrix :: Recall, TPR, or Sensitivity is calculated as \(\frac{TP}{TP+FN}\), assessing the ability of the model to capture all positive instances among the actual positive instances.
+
+Explain the relationship between precision and recall in classification metrics :: Precision and recall are inversely related due to the threshold value, presenting a trade-off in classification metrics.
+
+Define the F1-score and explain its significance :: The F1-score is a metric combining precision and recall into a single value using the harmonic mean. It is expressed as \(\frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}\), giving more weight to lower values and providing better measurements for classifiers with similar precision and recall.
+
+Explain why the choice of classification metric depends on the application :: The decision of which classification metric to use (accuracy, precision, recall, or F1-score) depends on the application's priorities. For instance, one may prioritize minimizing false positives, while another may focus on minimizing false negatives, as illustrated on page 93.
+
+Compare Online Learning and Batch Learning :: Online Learning processes data in a sequential manner, adapting to new observations continuously, while Batch Learning processes data in bulk, requiring the entire dataset to make adjustments to the model.
+
+List the types of Supervised Learning :: Supervised Learning, Unsupervised Learning, Semi-supervised Learning, and Reinforcement Learning.
+
+Explain the purpose of a Cost Function in model-based supervised learning :: The cost function is a metric used to assess the performance of the model by quantifying the difference between predicted and actual values, guiding the learning algorithm to minimize this difference during training.
+
+Define Utility Function in model-based supervised learning :: The utility function is a metric used to evaluate the performance of a model by measuring its effectiveness in increasing desired outcomes, contrasting with the cost function's goal of minimizing errors.
+
+Describe the role of a performance measure in evaluating machine learning models :: A performance measure is employed to assess the quality of predictions made by a model on unseen data, ensuring that the model generalizes well and doesn't merely memorize the training set.
+
+How can overfitting be assessed in machine learning? :: Overfitting can be assessed by using a validation set and a train-dev set, comparing model performance on these subsets to detect overfitting issues.
+
+Name three common solutions for addressing overfitting :: Reduce model complexity, obtain more data, or remove noise from the data.
+
+What is the purpose of fine-tuning hyperparameters in machine learning? :: Fine-tuning hyperparameters involves adjusting the configuration of a learning algorithm to optimize model performance and better tailor parameter values for improved accuracy.
+
+Enumerate the 8 main steps in a Machine Learning project :: 1. Understand the problem 2. Get the data 3. Clean and prepare the dataset 4. Gain domain knowledge 5. Select models and train 6. Finetune the best model 7. Present the solution 8. Launch and maintain
+
+How is cross-validation used in machine learning projects? :: Cross-validation is used in step 5 of a machine learning project to evaluate model performance by dividing the dataset into K folds and training different models on these folds randomly, providing a comprehensive assessment.
+
+What is the purpose of a Grid Search in machine learning? :: A Grid Search is employed during step 6 to find the best hyperparameter configuration by creating models with varying hyperparameter settings and training them using cross-validation.
+
+Explain the relationship between precision and recall in classification models :: Precision and recall are interdependent metrics in classification models. The choice of a threshold value in the decision function influences both metrics, and achieving a good trade-off is essential for optimal model performance.
+
+Describe the impact of threshold values on recall and precision :: Lower threshold values increase recall by reducing the likelihood of false negatives but decrease precision due to higher false positives. Higher threshold values, contrary to intuition, don't always imply higher precision; they decrease recall but may slightly reduce precision if true positives are removed while false positives remain constant.
+
+Define the ROC curve and its purpose :: The Receiver Operating Characteristic (ROC) curve is a graphical representation of the trade-off between the True Positive Ratio (sensitivity) and False Positive Ratio (1 - specificity). It provides insights into the performance of a classification model across different threshold values.
+
+Explain the metrics derived from the confusion matrix used in ROC curve analysis :: Sensitivity, Recall, and True Positive Ratio (TPR) are synonymous terms representing the ratio of correctly predicted positive instances. False Positive Ratio (FPR) is the complement of specificity (True Negative Ratio or TNR) and measures the ratio of false positives among actual negatives.
+
+Discuss the significance of the area under the ROC curve (AUC) :: The AUC of an ROC curve serves as a comparison tool for evaluating different models. A higher AUC value, closer to 1, indicates superior model performance, helping to choose the most suitable model for a given task.
+
+Highlight the preference for the Precision vs. Recall graph over the ROC curve in certain scenarios :: The Precision vs. Recall graph is preferred when dealing with a focus on the Positive class or when precision requires closer attention. Unlike the ROC curve, it provides specific information about precision, making it more suitable for addressing particular problem requirements.
+
+Define One vs One (OvO) strategy in multiclass classification :: OvO involves training binary classifiers for each pair of classes in a multiclass problem. For example, distinguishing between apple and orange, orange and pineapple, and so on. Although computationally expensive, it offers dimensionality reduction as each classifier trains on a subset of the dataset specific to the two classes being identified.
+
+Define One vs Rest (OvR) strategy in multiclass classification :: OvR involves training a binary classifier for each class to determine if an instance belongs to that class or not. For instance, classifying as apple or not apple, orange or not orange, and so forth. While computationally efficient, it may lead to imbalance issues in datasets.
+
+Explain the trade-off between OvO and OvR strategies in multiclass classification :: OvO requires training $\frac{N*(N-1)}{2}$ classifiers, where N is the number of classes, making it computationally expensive. However, it offers dimensionality reduction by focusing on subsets of the dataset. OvR, on the other hand, is computationally efficient but may face imbalances in datasets.
+
+Discuss the default strategy choices in popular machine learning libraries :: Most machine learning libraries, such as Sci-kit Learn, default to OvR strategy. However, algorithms that do not scale well with large datasets, like Support Vector Machines (SVMs), may default to OvO.
+
+Introduce two other classes of classifiers in multiclass classification :: Multi-label classifiers, like those used in face recognition, handle instances that may belong to multiple classes simultaneously. Multi-output classifiers, as seen in image noise removal pixel-by-pixel, predict multiple outputs for each instance.
